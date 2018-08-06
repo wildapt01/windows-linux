@@ -147,14 +147,14 @@ ESLint and Prettier will be installed **from the Ubuntu terminal** as will be th
 There is one thing to add to the User Settings in VSC which will convert the VSC terminal into a WSL terminal. Add the following snippet to the new Settings:
 
 ```js
-"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe"
+. . .
+"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+. . .
 ```
 
 ### Hitting the limits in WSL
 
-WSL, as good as it is now, will not play nice with GUI tools, so no GNOME or Linux Unity.
-
-It is also not too good at global installations. NodeJS passes muster, not ESLint or Nodemon , for instance. They will need to be installed on a per-project basis. One work-around is to integrate them in one's boilerplate `package.json`. Finally, the Ubuntu 18.04 provided works around a binary set from Linux kernel v.4.04, not the most recent version of it. It is best left alone, no need to update.
+WSL, as good as it is now, will not play nice with GUI tools, so no GNOME or Linux Unity. It is also not too good at global installations. NodeJS passes muster, not ESLint or Nodemon , for instance. They will need to be installed on a per-project basis. One work-around is to integrate them in one's boilerplate `package.json`. Finally, the Ubuntu 18.04 provided works around a binary set from Linux kernel v.4.04, not the most recent version of it. It is best left alone, no need to update.
 
 ### Installing PostgreSQL
 
@@ -162,7 +162,7 @@ This is a necessary item with 2 options, both with trade-offs. One is to install
 
 The other way is to install PostgreSQL on the WSL side so it is sandboxed sort of, which is what is described further down. On the flip side, the server needs to be restarted each time a WSL session is started. In some instances, the database needs to be created before the app scripts sync the app DB part to the database. Be cautious and take it slow, this part is pretty involved and can go sideways easily.
 
-First, open a WSL/Ubuntu window and update/upgrade the Ubuntu machine
+First, open a **WSL/Ubuntu window** and update/upgrade the Ubuntu machine:
 
 ```js
 User@Linux~$ sudo apt update
@@ -170,7 +170,7 @@ User@Linux~$ sudo apt update
 User@Linux~$ sudo apt upgrade
 ```
 
-The installation of Postgres is similar to the Part 1.
+The installation of Postgres is similar to Part 1:
 
 ```js
 User@Linux~$ sudo apt-get install postgresql postgresql-contrib
@@ -238,10 +238,11 @@ It may be a good idea to add Chrome to the PATH in WSL. This allows chrome.exe t
 ### Testing
 
 All those modifications have been tested on:
-Custom-built desktop PC i-5 4690K overclocked, 16GB RAM, 2TB storage (SSD/2HD), GTX 1070 NVidia 8GB,
-Surface Pro tablet (2017) i-7, 8GB RAM, 256GB SSD,
-Surface Book 2 i-7, 16GB RAM, 1TB SSD, GTX 1060 NVidia 8GB.
-All are running Windows 10 - April 2018.
+
+- Custom-built desktop PC i-5 4690K overclocked, 16GB RAM, 2TB storage (SSD/2HD), GTX 1070 NVidia 8GB,
+- Surface Pro tablet (2017) i-7, 8GB RAM, 256GB SSD,
+- Surface Book 2 i-7, 16GB RAM, 1TB SSD, GTX 1060 NVidia 8GB.
+  All are running Windows 10 - April 2018.
 
 _Microsoft, Windows, Windows 10 are trademarks of Microsoft Corp. MacBook Pro is a trademark of Apple Inc. Ubuntu is a trademark of Canonical Inc. UK._
 
