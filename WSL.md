@@ -123,6 +123,7 @@ From experience, it is best to start with NVM and NodeJS, as presented in the fi
 **Important** : Git, Curl, NVM and NodeJS are installed IN the Ubuntu terminal
 
 ### Text Editor and linter
+
 Links:
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
@@ -146,16 +147,19 @@ WSL, as good as it is, will not play nice with GUI tools, so no GNOME or Linux U
 It is also not too good at global installations. NodeJS passes muster, not ESLint or Nodemon , for instance. They will need to be installed on a per-project basis. One work-around is to integrate them in one's boilerplate `package.json`. Finally, the Ubuntu 18.04 provided works around a binary set from Linux kernel v. 4.04, not the most recent version of it. It is best left alone, no need to update.
 
 ### Installing PostgreSQL
+
 This is a necessary item with 2 options, both with trade-offs. One is to install PostgreSQL for Win10, but then the PostgreSQL server will start with Win10, every time, and stay on all the time. It may be something not needed nor wanted.
 
 The other way is to install PostgreSQL on the WSL side so it is sandboxed sort of, which is what is described further down. On the flip side, the server needs to be restarted each time a WSL session is started. In some instances, the database needs to be created before the app scripts sync the app DB part to the database. Be cautious and take it slow, this part is pretty involved and can go sideways easily.
 
 First, open a WSL/Ubuntu window and update/upgrade the Ubuntu machine
+
 ```js
 User@Linux~$ sudo apt update
 
 User@Linux~$ sudo apt upgrade
 ```
+
 The installation of Postgres is similar to the Part 1.
 
 ```js
@@ -165,11 +169,13 @@ User@Linux~$ sudo -u postgres createuser --superuser <$YOUR_USERNAME>
 
 User@Linux~$ createdb <$YOUR_USERNAME>
 ```
+
 Then edit `pg_hba.conf` the same way, the version number is 10 as of August 2018.
 
 ```js
 User@Linux~$ sudo nano /etc/postgresql/VERSION_NUMBER_HERE/main/pg_hba.conf
 ```
+
 Replace the `md5` values by `trust`, moving with the arrows and typing in the same exact spot. The file should look like this:
 
 ![pg_hba.config](/images/pbhgaConf.png)
@@ -181,15 +187,19 @@ Restart postgreSQL. It is the same command line for each time it is restarted. O
 ### Starting and stopping PostgreSQL service
 
 The main trade-off from installing PostgreSQL in WSL-Ubuntu and not in Win10 is to restart the PostgreSQL server each time the Ubuntu client is opened. Do it with :
+
 ```js
 User@Linux~$ sudo service postgresql start
 ```
-The other part is that the same server needs to be shut off when leaving. The server will continue taxing the memory and the CPU because of the Unix socket it uses. This can cause the machine to heat up. On thin machines like the Surface devices, it can be an issue. Use the following command:
+
+The other part is that the same server needs to be shut off when leaving. The server will continue taxing the memory and the CPU because of the Unix socket it uses. This can cause the machine to heat up nicely. On thin machines like the Surface devices, it can be an issue. Use the following command:
+
 ```js
 User@Linux~$ sudo service postgresql stop
 ```
 
 ### Installing some Tools
+
 Links:
 
 - ConEmu
@@ -201,21 +211,23 @@ Links:
 From previously, Homebrew, or more exactly its little brother for Linux (Linuxbrew), will not work well in WSL, so skip it.
 ZSH and Oh-My-Zsh will work, if prefered. A terminal manager like ConEmu can also be used, it’s just not completely necessary. It can run some GUI apps in WSL though. There are some possibilities but the cost in time may be a bit too much to really be interesting.
 
-1. Postman, a really great tool for back-end development. Here, the __Win10__ version will be installed, __from the Win10 side__, NOT the WSL-Ubuntu side. It works off the port served by the app, so it needs to simply plug in the same port.
+1.  Postman, a really great tool for back-end development. Here, the **Win10** version will be installed, **from the Win10 side**, NOT the WSL-Ubuntu side. It works off the port served by the app, so it needs to simply plug in the same port.
 
-2. DBeaver: installed on the __Win10__ side, as WSL does not support GUI. Setting up the connection in DBeaver can be a tad tricky. First, the JDBC driver needs to be installed, via the tab Driver.The connection parameters are mainly the user previously created, and the relevant password, if one has been defined. Check in the DB window if the <your_user> database can be accessed, even if it is presently empty.
+2.  DBeaver: installed on the **Win10** side, as WSL does not support GUI. Setting up the connection in DBeaver can be a tad tricky. First, the JDBC driver needs to be installed, via the tab Driver.The connection parameters are mainly the user previously created, and the relevant password, if one has been defined. Check in the DB window if the <your_user> database can be accessed, even if it is presently empty.
 
-3. Nodemon and Testem: installable on a per-project basis, AFAIK.
+3.  Nodemon and Testem: can be installed on a per-project basis, AFAIK.
 
-4. Psql cheat sheet: The kind of handy link to have somewhere, just in case.
+4.  Psql cheat sheet: The kind of handy link to have somewhere, just in case.
 
 It is more comfortable to get all these grouped in the Start Menu, even more so with a tousch screen device. It should look something like this.
 
 ### Which browser?
+
 Firefox is a good option, but Chrome or its open source twin Chromium are probably better for development. Just the debugger, if it’s the only aspect considered, is so worth the install. On the other hand, Firefox Inspector is quite good too. Your choice, or load them both.
 It may be a good idea to add Chrome to the PATH in WSL. This allows chrome.exe to be invoked from the WSL prompt. It can also be opened from Win10, and used the same way as well.
 
 ### Testing
+
 All those modifications have been tested on:
 Custom-built desktop PC i-5 4690K overclocked, 16GB RAM, 2TB storage (SSD/2HD), GTX 1070 NVidia 8GB,
 Surface Pro tablet (2017) i-7, 8GB RAM, 256GB SSD,
