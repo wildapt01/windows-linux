@@ -245,7 +245,7 @@ cd /mnt/c/Users/<YOUR_USER>/<MY_CODE_FILES>...
 
 Github Desktop will store repos in the default directory (Win10) indicated in its settings.
 
-**Power management**: This is a minus for Linux in general, it is not good at managing the power consumption. In the present configuration, WSL will increase the power consumption by about 10%, AFAIK. It is much better than in a full-fledged Ubuntu install on dual boot. PostgreSQL when activated will increase that as well. All the while, we have access to the camera(s), touch screen, USB connections, speakers, and so on.
+**Power management**: This is a minus for Linux in general, it is not good at managing the power consumption. In the present configuration, WSL will increase the power consumption by about 10%, AFAIK. It is much better than in a full-fledged Ubuntu install on dual boot, particularly for laptops and Surface devices. Heat generated is also much lower, comparable to Win10-only usage, and may increase under heavy workload. PostgreSQL when activated will increase that as well. All the while, we have access to the camera(s), touch screen, USB connections, speakers, and so on.
 
 ### Testing
 
