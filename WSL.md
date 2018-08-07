@@ -235,6 +235,18 @@ It is more comfortable to get all these grouped in the Start Menu, even more so 
 Firefox is a good option, but Chrome or its open source twin Chromium are probably better for development. Just the debugger, if it’s the only aspect considered, is so worth the install. On the other hand, Firefox Inspector is quite good too. Your choice, or load them both.
 It may be a good idea to add Chrome to the PATH in WSL. This allows chrome.exe to be invoked from the WSL prompt. It can also be opened from Win10, and used the same way as well.
 
+### A few notes
+
+**Storage**: Though WSL is encapsuled in the Console process, Windows takes over for exterior tasks, which is pretty cool. Files can be stored in their own space in User. To access disk space type:
+
+```js
+cd /mnt/c/Users/<YOUR_USER>/<MY_CODE_FILES>...
+```
+
+Github Desktop will store repos in the default directory (Win10) indicated in its settings.
+
+**Power management**: This is a minus for Linux in general, it is not good at managing the power consumption. In the present configuration, WSL will increase the power consumption by about 10%, AFAIK. It is much better than in a full-fledged Ubuntu install on dual boot. PostgreSQL when activated will increase that as well. All the while, we have access to the camera(s), touch screen, USB connections, speakers, and so on.
+
 ### Testing
 
 All those modifications have been tested on:
